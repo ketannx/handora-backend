@@ -3,6 +3,7 @@ const express=require('express')
 const cors=require('cors')
 const morgan=require("morgan")
 const cookieParser=require("cookie-parser")
+const cron = require('./utils/cron');
 const authRoutes=require("./routes/Auth")
 const productRoutes=require("./routes/Product")
 const orderRoutes=require("./routes/Order")
@@ -21,7 +22,7 @@ const server=express()
 
 // database connection
 connectToDB()
-
+cron.start();
 
 // middlewares
 server.use(cors({origin:process.env.ORIGIN,credentials:true,exposedHeaders:['X-Total-Count'],methods:['GET','POST','PATCH','DELETE']}))

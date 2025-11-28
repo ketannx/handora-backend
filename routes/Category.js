@@ -4,6 +4,7 @@ const router=express.Router()
 
 router
     .get("/",categoryController.getAll)
+    .post("/", categoryController.createCategory)
 
     
 module.exports=router
